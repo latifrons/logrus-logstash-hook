@@ -3,13 +3,12 @@ package logrustash_test
 import (
 	"bytes"
 	"fmt"
+	"github.com/latifrons/logrus-logstash-hook"
+	"github.com/sirupsen/logrus"
 	"net"
 	"strings"
 	"testing"
 	"time"
-
-	"github.com/bshuster-repo/logrus-logstash-hook"
-	"github.com/sirupsen/logrus"
 )
 
 func TestEntryIsNotChangedByLogstashFormatter(t *testing.T) {
