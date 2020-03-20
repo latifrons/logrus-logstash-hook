@@ -69,7 +69,7 @@ func copyEntry(e *logrus.Entry, fields logrus.Fields) *logrus.Entry {
 		if c, ok := v.(fmt.Stringer); ok {
 			ne.Data[k] = c.String()
 		} else {
-			ne.Data[k] = c
+			ne.Data[k] = v
 		}
 
 	}
@@ -77,7 +77,7 @@ func copyEntry(e *logrus.Entry, fields logrus.Fields) *logrus.Entry {
 		if c, ok := v.(fmt.Stringer); ok {
 			ne.Data[k] = c.String()
 		} else {
-			ne.Data[k] = c
+			ne.Data[k] = v
 		}
 	}
 	return ne
