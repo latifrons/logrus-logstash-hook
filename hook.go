@@ -1,6 +1,7 @@
 package logrustash
 
 import (
+	"fmt"
 	"io"
 	"sync"
 
@@ -65,7 +66,12 @@ func copyEntry(e *logrus.Entry, fields logrus.Fields) *logrus.Entry {
 	ne.Time = e.Time
 	ne.Data = logrus.Fields{}
 	for k, v := range fields {
-		ne.Data[k] = v
+		if c, ok := v.(fmt.Stringer); ok {
+			ne.Data[k] = c.String()
+		} else {
+
+		}
+
 	}
 	for k, v := range e.Data {
 		ne.Data[k] = v
