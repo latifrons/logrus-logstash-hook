@@ -69,12 +69,16 @@ func copyEntry(e *logrus.Entry, fields logrus.Fields) *logrus.Entry {
 		if c, ok := v.(fmt.Stringer); ok {
 			ne.Data[k] = c.String()
 		} else {
-
+			ne.Data[k] = c
 		}
 
 	}
 	for k, v := range e.Data {
-		ne.Data[k] = v
+		if c, ok := v.(fmt.Stringer); ok {
+			ne.Data[k] = c.String()
+		} else {
+			ne.Data[k] = c
+		}
 	}
 	return ne
 }
